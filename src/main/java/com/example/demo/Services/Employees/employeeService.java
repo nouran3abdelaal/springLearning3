@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class employeeService {
@@ -24,15 +25,17 @@ public class employeeService {
         employeeList.add(employee);
     }
 
-    public void editEmployee(employee employee) {
-        employeeList.stream()
+    public List<employee> editEmployee(employee employee) {
+       employeeList= employeeList.stream()
                 .map(existingEmployee -> {
                     if (existingEmployee.getId().equals(employee.getId())) {
+
                         return employee;
                     } else {
                         return existingEmployee;
                     }
-                });
+                }).collect(Collectors.toList());
+        return employeeList;
 
     }
 

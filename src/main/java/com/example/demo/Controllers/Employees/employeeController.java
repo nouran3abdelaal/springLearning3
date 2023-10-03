@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@RestController()
 
-@RestController("/Employee")
+//@RestController("/Employee")
 public class employeeController {
     @Autowired
     private employeeService service;
@@ -20,8 +21,8 @@ public class employeeController {
         service.addEmployee(employee);
     }
     @PutMapping("/EditEmployee")
-    void editEmployee(@RequestBody employee employee){
-        service.editEmployee(employee);
+    List<employee> editEmployee(@RequestBody employee employee){
+       return service.editEmployee(employee);
     }
     @DeleteMapping("/deleteEmployee/{id}")
     void deleteEmployee(@PathVariable String id){
