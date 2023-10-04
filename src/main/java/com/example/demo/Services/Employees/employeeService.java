@@ -1,14 +1,18 @@
 package com.example.demo.Services.Employees;
 
 import com.example.demo.models.employee;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+//@Service
 public class employeeService {
+    @Setter
     List<employee> employeeList = new ArrayList<>(
             List.of(
                     new employee("1","Ahmed",26, 'M'),
@@ -16,7 +20,15 @@ public class employeeService {
 
             )
     );
+    @Autowired
+    @Qualifier("List1")
+    List<employee> myList1;
+    @Autowired
+    @Qualifier("List2")
+    List<employee> myList2;
     public List<employee> getAllEmployees() {
+        System.out.println(myList1);
+        System.out.println(myList2);
 
         return employeeList;
     }
