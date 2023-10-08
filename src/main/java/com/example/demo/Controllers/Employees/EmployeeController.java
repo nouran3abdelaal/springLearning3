@@ -1,6 +1,7 @@
 package com.example.demo.Controllers.Employees;
 
 import com.example.apps2.Employees.EmployeeService;
+import com.example.apps2.Exceptions.customException;
 import com.example.apps2.models.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class EmployeeController {
        return service.editEmployee(Employee);
     }
     @DeleteMapping("/deleteEmployee/{id}")
-    void deleteEmployee(@PathVariable String id){
+    void deleteEmployee(@PathVariable String id) throws customException {
         service.deleteEmployee(id);
     }
 
